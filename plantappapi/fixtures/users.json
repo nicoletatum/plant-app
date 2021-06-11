@@ -1,0 +1,10 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "123",
+            "first_name": "Nicole"
+        }
+    }
+]
