@@ -39,38 +39,37 @@ def login_user(request):
             return HttpResponse(data, content_type='application/json')
 
 
-# @csrf_exempt
-# def register_user(request):
-#     '''Handles the creation of a new gamer for authentication
+@csrf_exempt
+def register_user(request):
+    '''Handles the creation of a new gamer for authentication
 
-#     Method arguments:
-#     request -- The full HTTP request object
-#     '''
+    Method arguments:
+    request -- The full HTTP request object
+    '''
 
-#     # Load the JSON string of the request body into a dict
-#     req_body = json.loads(request.body.decode())
+    # Load the JSON string of the request body into a dict
+    req_body = json.loads(request.body.decode())
 
-#     # Create a new user by invoking the `create_user` helper method
-#     # on Django's built-in User model
-#     new_user = User.objects.create_user(
-#         email=req_body['email'],
-#         password=req_body['password'],
-#         first_name=req_body['first_name'],
-#         last_name=req_body['last_name']
-#     )
+    # Create a new user by invoking the `create_user` helper method
+    # on Django's built-in User model
+    new_user = User.objects.create_user(
+        username=req_body['username'],
+        password=req_body['password'],
+        first_name=req_body['first_name'],
+        last_name=req_body['last_name']
+    )
 
-#     # Now save the extra info in the levelupapi_gamer table
-#     plantowner = PlantOwner.objects.create(
-#         bio=req_body['bio'],
-#         user=new_user
-#     )
+    # Now save the extra info in the levelupapi_gamer table
+    plantowner = PlantOwner.objects.create(
+        user=new_user
+    )
 
-#     # Commit the user to the database by saving it
-#     plantowner.save()
+    # Commit the user to the database by saving it
+    plantowner.save()
 
-#     # Use the REST Framework's token generator on the new user account
-#     token = Token.objects.create(user=new_user)
+    # Use the REST Framework's token generator on the new user account
+    token = Token.objects.create(user=new_user)
 
-#     # Return the token to the client
-#     data = json.dumps({"token": token.key})
-#     return HttpResponse(data, content_type='application/json', status=status.HTTP_201_CREATED)
+    # Return the token to the client
+    data = json.dumps({"token": token.key})
+    return HttpResponse(data, content_type='application/json', status=status.HTTP_201_CREATED)
