@@ -51,5 +51,5 @@ class PlantView(ViewSet):
 class PlantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plant
-        fields = ('id', 'name', 'plant_pic', 'light_level', 'water_needs', 'temp_needs', 'potting_needs', 'plant_owner', 'notes')
-
+        fields = ('id', 'name', 'plant_pic', 'light_level', 'water_amount', 'temp_needs', 'potting_needs', 'plant_owner', 'notes')
+        depth = 1
