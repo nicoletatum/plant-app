@@ -1,0 +1,23 @@
+[
+    {
+        "model": "plantappapi.water",
+        "pk": 1,
+        "fields": {
+            "water_needs": "High"
+        }
+    },
+    {
+        "model": "plantappapi.water",
+        "pk": 2,
+        "fields": {
+            "water_needs": "Moderate"
+        }
+    },
+    {
+        "model": "plantappapi.water",
+        "pk": 3,
+        "fields": {
+            "water_needs": "Low"
+        }
+    }
+]

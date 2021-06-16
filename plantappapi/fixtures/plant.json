@@ -1,0 +1,30 @@
+[
+    {
+        "model": "plantappapi.plant",
+        "pk": 1,
+        "fields": {
+            "name":"zz plant",
+            "plant_pic":"",
+            "light_level": 1,
+            "water_needs": 3,
+            "temp_needs": "Higher temperatures are ideal. Can tolerate avg living temp",
+            "potting_needs": "Well draining soil and a pot that isn't too large",
+            "plant_owner": 1,
+            "notes": "plant is very easy to take care of."
+        }
+    },
+    {
+        "model": "plantappapi.plant",
+        "pk": 2,
+        "fields": {
+            "name":"peace lily",
+            "plant_pic":"",
+            "light_level": 3,
+            "water_needs": 2,
+            "temp_needs": "Higher temperatures are ideal. Can tolerate avg living temp",
+            "potting_needs": "avg soil needs. avg size pot",
+            "plant_owner": 1,
+            "notes": "leaves will wilt when water is needed. Plant is very easy to take care of."
+        }
+    }
+]
