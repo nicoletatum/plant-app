@@ -1,34 +1,40 @@
+from django.db.models.deletion import SET_DEFAULT
 from django.http import HttpResponseServerError, response
+from django.core.exceptions import ValidationError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from plantappapi.models import Plant, PlantOwner
+from rest_framework import status
+from plantappapi.models import Plant, PlantOwner, Light, Water
 
 class PlantView(ViewSet):
 
-    # def create(self, request):
+    def create(self, request):
 
-    #     #uses token passed in 'auth' header
-    #     plant = Plant.objects.get(user=request.auth.user)
-        
-    #     #create new plant class instance
-    #     #and set properties from what was sent
-    #     plant = Plant()
-    #     plant.name = request.data["name"]
-    #     plant.light_level = request.data["light_level"]
-    #     plant.water_needs = request.data["water_needs"]
-    #     plant.temp_needs = request.data["temp_needs"]
-    #     plant.potting_needs = request.data["potting_needs"]
-    #     plant.plant_owner = PlantOwner
-    #     plant.notes = request.data["notes"]
+        #uses token passed in 'auth' header
+        plant_owner = PlantOwner.objects.get(user=request.auth.user)
+        light_level = Light.objects.get(pk=request.data["light_level"])
+        water_needs = Water.objects.get(pk=request.data["water_amount"])
 
-    #     try:
-    #         plant.save()
-    #         serializer = PlantSerializer
+        #create new plant class instance
+        #and set properties from what was sent
+        plant = Plant()
+        plant.name = request.data["name"]
+        plant.light_level = light_level
+        plant.water_amount = water_needs
+        plant.temp_needs = request.data["temp_needs"]
+        plant.potting_needs = request.data["potting_needs"]
+        plant.plant_owner = plant_owner
+        plant.notes = request.data["notes"]
 
+        try:
+            plant.save()
+            serializer = PlantSerializer(plant, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
-#PICK BACK UP HERE. LEFT TUESDAY NIGHT WORKING ON GET/POST PLANT
 
     def retrieve(self, request, pk=None):
 
