@@ -3,21 +3,21 @@
         "model": "plantappapi.light",
         "pk": 1,
         "fields": {
-            "light_level": "High Light"
+            "level": "High Light"
         }
     },
     {
         "model": "plantappapi.light",
         "pk": 2,
         "fields": {
-            "light_level": "Medium Light"
+            "level": "Medium Light"
         }
     },
     {
         "model": "plantappapi.light",
         "pk": 3,
         "fields": {
-            "light_level": "Low Light"
+            "level": "Low Light"
         }
     }
 ]
