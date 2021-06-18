@@ -18,10 +18,12 @@ from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from plantappapi.views import login_user, register_user, PlantView
+from plantappapi.views import login_user, register_user, PlantView, WaterView, LightView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'plants', PlantView, 'plant')
+router.register(r'water', WaterView, 'water')
+router.register(r'light', LightView, 'light')
 
 urlpatterns = [
     path('', include(router.urls)),
