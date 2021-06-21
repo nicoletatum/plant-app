@@ -11,6 +11,4 @@ class Plant(models.Model):
     potting_needs = models.CharField(max_length=200)
     temp_needs = models.CharField(max_length=200)
     notes = models.CharField(max_length=200)
-    plant_pic = models.ImageField(
-        upload_to='plantimage', height_field=None,
-        width_field=None, max_length=None, null=True)
+    plant_pic = models.URLField(null=True)
