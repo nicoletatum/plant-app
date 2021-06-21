@@ -46,8 +46,6 @@ class PlantView(ViewSet):
         except Exception as ex: 
             return HttpResponseServerError(ex)
 
-
-
     def update(self,request, pk=None):
         
         #uses token passed in 'auth' header
@@ -55,7 +53,7 @@ class PlantView(ViewSet):
         light_level = Light.objects.get(pk=request.data["light_level"])
         water_needs = Water.objects.get(pk=request.data["water_amount"])
 
-        plant = Plant()
+        plant = Plant.objects.get(pk=pk)
         plant.name = request.data["name"]
         plant.light_level = light_level
         plant.water_amount = water_needs
@@ -68,6 +66,20 @@ class PlantView(ViewSet):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+
+    def destroy(self, request, pk=None):
+        
+        try:
+            plant = Plant.objects.get(pk=pk)
+            plant.delete()
+
+            return Response({}, status= status.HTTP_204_NO_CONTENT)
+
+        except Plant.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
 
 
     def list(self, request):
