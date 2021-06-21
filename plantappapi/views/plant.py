@@ -1,14 +1,22 @@
 from django.db.models.deletion import SET_DEFAULT
 from django.db.models.query import FlatValuesListIterable
-from django.http import HttpResponseServerError, response
+from django.http import HttpResponseServerError
 from django.core.exceptions import ValidationError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
+from django.conf import settings
 from plantappapi.models import Plant, PlantOwner, Light, Water
+import cloudinary
+
 
 class PlantView(ViewSet):
+    """ plants """
+    cloudinary.config(
+            cloud_name=settings.CLOUDINARY_STORAGE['CLOUD_NAME'],
+            api_key=settings.CLOUDINARY_STORAGE['API_KEY'],
+            api_secret=settings.CLOUDINARY_STORAGE['API_SECRET'])
 
     def create(self, request):
 
@@ -27,6 +35,7 @@ class PlantView(ViewSet):
         plant.potting_needs = request.data["potting_needs"]
         plant.plant_owner = plant_owner
         plant.notes = request.data["notes"]
+        plant.plant_pic = cloudinary.uploader.upload(request.data['plant_pic'])['url']
 
         try:
             plant.save()
@@ -46,8 +55,7 @@ class PlantView(ViewSet):
         except Exception as ex: 
             return HttpResponseServerError(ex)
 
-    def update(self,request, pk=None):
-        
+    def update(self,request, pk=None):     
         #uses token passed in 'auth' header
         plant_owner = PlantOwner.objects.get(user=request.auth.user)
         light_level = Light.objects.get(pk=request.data["light_level"])
@@ -61,6 +69,7 @@ class PlantView(ViewSet):
         plant.potting_needs = request.data["potting_needs"]
         plant.plant_owner = plant_owner
         plant.notes = request.data["notes"]
+        plant.plant_pic = cloudinary.uploader.upload(request.data['plant_pic'])['url']
 
         plant.save()
 
