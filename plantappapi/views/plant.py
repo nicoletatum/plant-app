@@ -69,7 +69,9 @@ class PlantView(ViewSet):
         plant.potting_needs = request.data["potting_needs"]
         plant.plant_owner = plant_owner
         plant.notes = request.data["notes"]
-        plant.plant_pic = cloudinary.uploader.upload(request.data['plant_pic'])['url']
+        if request.data["plant_pic"] !="":
+            plant.plant_pic = cloudinary.uploader.upload(request.data['plant_pic'])['url']
+        plant.pest_watch = request.data["pest_watch"]
 
         plant.save()
 
@@ -93,7 +95,7 @@ class PlantView(ViewSet):
 
     def list(self, request):
 
-        plant = Plant.objects.all()
+        plant = Plant.objects.all().order_by("-pest_watch")
 
         serializer = PlantSerializer(
             plant, many=True, context={'request': request})
@@ -114,4 +116,4 @@ class PlantSerializer(serializers.ModelSerializer):
     water_amount = WaterSerializer(many=False)
     class Meta:
         model = Plant
-        fields = ('id', 'name', 'plant_pic', 'light_level', 'water_amount', 'temp_needs', 'potting_needs', 'plant_owner', 'notes')
+        fields = ('id', 'name', 'plant_pic', 'pest_watch', 'light_level', 'water_amount', 'temp_needs', 'potting_needs', 'plant_owner', 'notes')
