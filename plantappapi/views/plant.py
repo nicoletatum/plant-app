@@ -36,7 +36,8 @@ class PlantView(ViewSet):
         plant.plant_owner = plant_owner
         plant.notes = request.data["notes"]
         plant.plant_pic = cloudinary.uploader.upload(request.data['plant_pic'])['url']
-        plant.last_water = request.data["last_water"]
+        if request.data["last_water"] !="":
+            plant.last_water = request.data["last_water"]
 
         try:
             plant.save()
@@ -73,7 +74,8 @@ class PlantView(ViewSet):
         if request.data["plant_pic"] !="":
             plant.plant_pic = cloudinary.uploader.upload(request.data['plant_pic'])['url']
         plant.pest_watch = request.data["pest_watch"]
-        plant.last_water = request.data["last_water"]
+        if request.data["last_water"] !="":
+            plant.last_water = request.data["last_water"]
 
         plant.save()
 
