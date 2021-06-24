@@ -11,3 +11,4 @@ class Plant(models.Model):
     notes = models.CharField(max_length=200)
     plant_pic = models.URLField(null=True)
     pest_watch = models.BooleanField(default=False)
+    last_water = models.DateField()
