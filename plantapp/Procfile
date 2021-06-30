@@ -1,1 +1,1 @@
-web: gunicorn plantappapi.wsgi --log-file -
+web: gunicorn plant-app.wsgi --log-file -
