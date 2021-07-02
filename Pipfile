@@ -12,6 +12,7 @@ django-cors-headers = "*"
 pylint-django = "*"
 cloudinary = "*"
 django-environ = "*"
+environ = "*"
 gunicorn = "*"
 django-on-heroku = "*"
 
