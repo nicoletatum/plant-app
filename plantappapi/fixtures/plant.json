@@ -3,28 +3,112 @@
         "model": "plantappapi.plant",
         "pk": 1,
         "fields": {
-            "name":"zz plant",
-            "plant_pic":"",
+            "name": "zz plant",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624389448/qns5y175mi8wl5frfii2.jpg",
+            "pest_watch": true,
             "light_level": 1,
             "water_amount": 3,
             "temp_needs": "Higher temperatures are ideal. Can tolerate avg living temp",
             "potting_needs": "Well draining soil and a pot that isn't too large",
             "plant_owner": 1,
-            "notes": "plant is very easy to take care of."
+            "notes": "plant is very easy to take care of.",
+            "last_water": "2021-06-25"
         }
     },
     {
         "model": "plantappapi.plant",
         "pk": 2,
         "fields": {
-            "name":"peace lily",
-            "plant_pic":"",
-            "light_level": 3,
+            "name": "Umbrella Plant",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624409678/ev1ouax8nnjcng9yfmal.jpg",
+            "pest_watch": true,
+            "light_level": 2,
             "water_amount": 2,
+            "temp_needs": "avg room temp is best",
+            "potting_needs": "avg potting soil with a little extra space for roots",
+            "plant_owner": 1,
+            "notes": "this plant has had scale on it for a year idk what to do ",
+            "last_water": "2021-06-25"
+        }
+    },
+    {
+        "model": "plantappapi.plant",
+        "pk": 3,
+        "fields": {
+            "name": "peace lily",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624409605/h0gt152hjb1w5wf4ky4c.jpg",
+            "pest_watch": false,
+            "light_level": 1,
+            "water_amount": 1,
             "temp_needs": "Higher temperatures are ideal. Can tolerate avg living temp",
             "potting_needs": "avg soil needs. avg size pot",
             "plant_owner": 1,
-            "notes": "leaves will wilt when water is needed. Plant is very easy to take care of."
+            "notes": "leaves will wilt when water is needed. Plant is very easy to take care of.",
+            "last_water": "2021-06-25"
+        }
+    },
+    {
+        "model": "plantappapi.plant",
+        "pk": 4,
+        "fields": {
+            "name": "Snake Plant",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624389651/tiqx9qo4lgjpx572er89.jpg",
+            "pest_watch": false,
+            "light_level": 1,
+            "water_amount": 3,
+            "temp_needs": "Higher temperatures are ideal. Can tolerate avg living temp",
+            "potting_needs": "Well draining soil. is okay if root bound ",
+            "plant_owner": 1,
+            "notes": "very hardy but avoid putting in direct heavy sunlight ",
+            "last_water": "2021-06-25"
+        }
+    },
+    {
+        "model": "plantappapi.plant",
+        "pk": 5,
+        "fields": {
+            "name": "Pothos",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624389734/yltexkxbzbg8j6xrnvl8.jpg",
+            "pest_watch": false,
+            "light_level": 2,
+            "water_amount": 2,
+            "temp_needs": "avg living temp tolerated ",
+            "potting_needs": "well draining soil. likes to be root bound",
+            "plant_owner": 1,
+            "notes": "high humidity, pale leaves = too much sun",
+            "last_water": "2021-06-25"
+        }
+    },
+    {
+        "model": "plantappapi.plant",
+        "pk": 6,
+        "fields": {
+            "name": "Fittonia Albivenis(Nerve Plant)",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624401786/igzs4mll6hwez8q4xdp8.jpg",
+            "pest_watch": false,
+            "light_level": 2,
+            "water_amount": 2,
+            "temp_needs": "60-80F (70 is ideal)",
+            "potting_needs": "Well draining soil and a pot that gives roots a bit of extra room ",
+            "plant_owner": 1,
+            "notes": "enjoys humidity ",
+            "last_water": "2021-06-25"
+        }
+    },
+    {
+        "model": "plantappapi.plant",
+        "pk": 7,
+        "fields": {
+            "name": "Prayer Plant",
+            "plant_pic": "http://res.cloudinary.com/nicoletatum/image/upload/v1624402052/jclqjynigdq9oxlz0v8z.jpg",
+            "pest_watch": false,
+            "light_level": 2,
+            "water_amount": 2,
+            "temp_needs": "70-80 F",
+            "potting_needs": "well drained soil kept moist during growing season.",
+            "plant_owner": 1,
+            "notes": "",
+            "last_water": "2021-06-25"
         }
     }
 ]
