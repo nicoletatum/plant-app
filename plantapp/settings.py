@@ -9,19 +9,18 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
 from pathlib import Path
 import os
-import environ
+# import environ
 import django_on_heroku
 
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME":"nicoletatum",
-    "API_KEY": env("CLOUDINARY_API_KEY"),
-    "API_SECRET": env("CLOUDINARY_SECRET_KEY")
+    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.getenv("CLOUDINARY_SECRET_KEY")
 }
 
 
@@ -169,5 +168,6 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 django_on_heroku.settings(locals())
