@@ -6,8 +6,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from django.conf import settings
-from plantappapi.models import Plant, PlantOwner, Light, Water
 import cloudinary
+from plantappapi.models import Plant, PlantOwner, Light, Water
 
 
 class PlantView(ViewSet):
@@ -18,7 +18,7 @@ class PlantView(ViewSet):
             api_secret=settings.CLOUDINARY_STORAGE['API_SECRET'])
 
     def create(self, request):
-
+        """ creates plant """
         #uses token passed in 'auth' header
         plant_owner = PlantOwner.objects.get(user=request.auth.user)
         light_level = Light.objects.get(pk=request.data["light_level"])
@@ -83,7 +83,6 @@ class PlantView(ViewSet):
 
 
     def destroy(self, request, pk=None):
-        
         try:
             plant = Plant.objects.get(pk=pk)
             plant.delete()

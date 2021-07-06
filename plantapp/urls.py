@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from rest_framework import routers
+from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
@@ -28,6 +29,7 @@ router.register(r'light', LightView, 'light')
 urlpatterns = [
     path('', include(router.urls)),
     path('login', login_user),
+    path('admin/', admin.site.urls),
     path('register', register_user),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
